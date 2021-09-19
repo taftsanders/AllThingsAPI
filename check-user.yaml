@@ -1,0 +1,45 @@
+---
+- name: Add Red Hat access.redhat.com users
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - .ansible/vault_file.yaml
+  vars:
+    - new_username: Test-Ted
+  tasks:
+    - name: Get Temp Token
+      shell: "curl -s https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token -d grant_type=refresh_token -d client_id=rhsm-api -d refresh_token={{ RHSM_API_TOKEN }} | jq --raw-output .access_token"
+      no_log: true
+      register: token
+
+    - name: Check connection
+      uri:
+        url: https://api.access.redhat.com/account/v1/accounts
+        method: GET
+        headers:
+          Accept: "application/json"
+          Authorization: "Bearer {{ token.stdout }}"
+
+    - name: "Get {{ USER }} Status"
+      uri:
+        url: "https://api.access.redhat.com/account/v1/accounts/1979710/users/{{ USER }}/status"
+        method: GET
+        headers:
+          Accept: "Application/json"
+          Authorization: "Bearer {{ token.stdout }}"
+      register: output
+
+    - name: "Print {{ USER }} Status"
+      debug: var=output.json.body.status
+
+    - name: "Get {{ USER }} Roles"
+      uri:
+        url: "https://api.access.redhat.com/account/v1/accounts/1979710/users/{{ USER }}/roles"
+        method: GET
+        headers:
+          Accept: "Application/json"
+          Authorization: "Bearer {{ token.stdout }}"
+      register: output
+
+    - name: "Print {{ USER }} Roles"
+      debug: var=output.json.body.roles
