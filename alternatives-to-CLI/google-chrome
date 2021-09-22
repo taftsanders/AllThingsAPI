@@ -1,0 +1,15 @@
+Ever wonder how some data is populated on a webpage? Some pages actually populate some information from making an API call to the application. With the dev tools on your browswer, you can see API calls that are made and copy them as curl commands.
+
+1. Open your web browser and navigate to the page of an application
+
+2. On the page, right-click and select "Inspect" to bring up the developer tools window
+
+3. Click on the "Network" tab at the top of the developer tools window
+
+4. Refresh the webpage you navigated to. This will reset the network capture and allow you to stop the recording of the network traffic whenever you want. I would recommend stopping after the page loads.
+
+5. From the list of files that are loaded you can use the search bar to search for a known API endpoint or common terms used in an API like api,v#,etc.
+
+6. Select the file from the filter results and inspect the Headers, Preview, Response, and more.
+
+7. Wanna make this same call using curl from your command line just like this browser just did? Right-click on the file > Copy > Copy as cURL. This will save the API call made from the browser as a curl command to your clipboard. You're Welcome! 

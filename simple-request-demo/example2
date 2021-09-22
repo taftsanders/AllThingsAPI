@@ -1,0 +1,9 @@
+Terminal 1:
+# echo "Hello GSTI Viewers" | nc -l 8888
+or to read the contents from a file:
+# echo "Hello GSTI Viewers" > /tmp/hello.txt
+# cat /tmp/hello.txt | nc -l 8888
+
+
+Terminal 2:
+# curl --http0.9 http://localhost.localdomain:8888

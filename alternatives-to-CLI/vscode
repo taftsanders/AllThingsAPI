@@ -1,0 +1,18 @@
+Ever find yourself writing a little code and you need to test the configurations needed to make a request to something and get the response to understand how to handle it?
+Do you use VSCode?
+If you said yes to both these questions, check this out!
+
+1. Open VSCode and navigate to the extension library
+
+2. Locate the extension "REST Client" by Huachao Mao and install it
+
+3. This extension will give you the power to make API calls directly from the IDE without having to leave the application
+
+4. Create a file to type in your request
+Example:
+GET https://bombsat69.usersys.redhat.com/api/hosts/3/
+Authorization: Basic admin:redhat
+
+5. Once you have your request, locate the "Send Requst" button at the top of the file right below the file name, and click it.
+
+6. The screen will split and the new section will now include all headers used in the request along with the output returned from the request. 

@@ -1,0 +1,18 @@
+Let's pull the NASA APOD (Astronomy Picture of the Day)! If you haven't already done so, go get yourself a NASA API key. They're FREE!
+https://api.nasa.gov/#signUp
+
+Set your NASA API key to a variable to save some time copying and pastaing:
+# export nasa_api_key=0123456789abcdef
+
+Test 1:
+What does the image of the day API provide?
+# curl -s -X GET https://api.nasa.gov/planetary/apod?api_key=$nasa_api_key\&date=2021-07-04 | json_reformat
+
+Test 2:
+Let's get the HD pics URL!
+# curl -s -X GET https://api.nasa.gov/planetary/apod?api_key=$nasa_api_key\&date=2021-07-04 | jq .hdurl
+
+Test 3:
+I wish I could make the API call and send the result URL to my browser in 1 command. WISH GRANTED!
+# firefox (curl -s -X GET https://api.nasa.gov/planetary/apod?api_key=$nasa_api_key\&date=2021-07-04 | jq -r .hdurl)
+

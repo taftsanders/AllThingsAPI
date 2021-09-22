@@ -1,0 +1,17 @@
+Get all subscriptions on my Satellite server and their expirations
+
+Test 1:
+# curl https://satellite.example.com/katello/api/subscriptions
+Fails with untrusted self-signed CA certificate error
+
+Test 2:
+# curl -k https://satellite.example.com/katello/api/subscriptions
+Returns JSON but fails with user authentication
+
+Test 3:
+# curl -k -u admin:redhat https://satellite.example.com/katello/api/subscriptions
+FINALLY! Results! But this is a lot of info, break it down more
+
+Test 4:
+# curl -k -u admin:redhat https://satellite.example.com/katello/api/subscriptions | jq '.results[]| "\(.name) \(.end_date)"'
+Awww yeah! Too legit to quit!

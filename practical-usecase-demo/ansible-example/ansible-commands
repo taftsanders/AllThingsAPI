@@ -1,0 +1,4 @@
+Run the ansible playbook check-user.yaml with the variable {{ USER }} set to the ID# of the user you would like to query.
+
+Test 1:
+# ansible-playbook git/AllThingsAPI/practical-usecase-demo/ansible-example/check-user.yaml --ask-vault-pass -e USER=<USER ID#>

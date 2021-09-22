@@ -1,0 +1,6 @@
+Terminal 1:
+# nc -l 8888
+
+
+Terminal 2:
+# curl http://localhost.localdomain:8888
